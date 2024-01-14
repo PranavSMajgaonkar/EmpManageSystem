@@ -10,19 +10,13 @@ import java.util.List;
 
 @RestController
 public class EmployeeInfo {
-
-//    private final
-    @Autowired
-    EmployeeRepository employeeService;
-
-
+   /* Employee employee;
     @GetMapping("/getAllEmployees")
     public List<EmployeeEnt> getAllEmployees(){
-        return employeeService.findAll();
+        return employee.getList();
     }
-
     @PostMapping("/register_employee")
     public void createEmployee(@RequestBody EmployeeEnt employeeEnt){
-        employeeService.save(employeeEnt);
-    }
+        employee.saveEmployee(employeeEnt);
+    }*/
 }

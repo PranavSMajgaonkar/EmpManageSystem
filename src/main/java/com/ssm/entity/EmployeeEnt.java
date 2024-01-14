@@ -6,81 +6,39 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.List;
 
-@Getter
 @Entity
 @Table(name = "Employee")
 @Data
-@Setter
 public class EmployeeEnt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int employeeId;
-    @Column(nullable = false)
+    @Column(name = "EmployeeID")
+    private Integer employeeId;
+    @Column(name = "FirstName")
     private String firstName;
-    @Column
+    @Column(name = "LastName")
     private String lastName;
-    @Column
+    @Column(name = "DateOfBirth")
     private Date dateOfBirth;
+    @Column(name = "Gender")
     private String gender;
+    @Column(name = "ContactNumber")
     private String contactNumber;
+    @Column(name = "Email")
     private String email;
+    @Column(name = "Address")
     private String address;
-    private String departmentId;
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = DepartmentEnt.class)
+    @Column(name = "DepartmentID")
+    private List<DepartmentEnt> departmentId;
+    @Column(name = "Position")
     private String position;
-    private double salary;
+    @Column(name = "Salary")
+    private Double salary;
+    @Column(name = "HireDate")
     private Date hireDate;
-    private int supervisorId;
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setDepartmentId(String departmentId) {
-        this.departmentId = departmentId;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
-    public void setHireDate(Date hireDate) {
-        this.hireDate = hireDate;
-    }
-
-    public void setSupervisorId(int supervisorId) {
-        this.supervisorId = supervisorId;
-    }
+    @Column(name = "SupervisorId")
+    private Integer supervisorId;
 }

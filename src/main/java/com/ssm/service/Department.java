@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Department {
-    private final DepartmentRepository departmentRepo;
 
-@Autowired
-    public Department(DepartmentRepository departmentRepo) {
-        this.departmentRepo = departmentRepo;
+    private final DepartmentRepository departmentRepository;
+    @Autowired
+    public Department(DepartmentRepository departmentRepository) {
+        System.out.println("flow goes into this");
+        this.departmentRepository = departmentRepository;
     }
-
     public void saveDepartmentInfo(DepartmentEnt department){
-        departmentRepo.save(department);
+        departmentRepository.save(department);
     }
 }

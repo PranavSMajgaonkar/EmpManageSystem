@@ -9,9 +9,8 @@ import java.util.List;
 
 @Service
 public class Employee {
-    private final EmployeeRepository empRepo;
+    /*private final EmployeeRepository empRepo;
 
-@Autowired
     public Employee(EmployeeRepository employeeRepository) {
         this.empRepo = employeeRepository;
     }
@@ -21,5 +20,5 @@ public class Employee {
     }
     public List<EmployeeEnt> getList(){
        return empRepo.findAll();
-    }
+    }*/
 }
