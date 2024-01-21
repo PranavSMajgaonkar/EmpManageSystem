@@ -2,41 +2,45 @@ package com.ssm.EmpManageSystem.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GeneratedColumn;
+import org.hibernate.annotations.IdGeneratorType;
+import org.hibernate.annotations.ValueGenerationType;
 
 import java.sql.Date;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "Employee")
-@Data
 public class EmployeeEnt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "EmployeeID")
+    @Column(name = "employee_id")
     private Integer employeeId;
-    @Column(name = "FirstName")
+    @Column(name = "first_name")
     private String firstName;
-    @Column(name = "LastName")
+    @Column(name = "last_name")
     private String lastName;
-    @Column(name = "DateOfBirth")
+    @Column(name = "date_of_birth")
     private Date dateOfBirth;
-    @Column(name = "Gender")
+    @Column(name = "gender")
     private String gender;
-    @Column(name = "ContactNumber")
+    @Column(name = "contact_number")
     private String contactNumber;
-    @Column(name = "Email")
+    @Column(name = "email_id")
     private String email;
-    @Column(name = "Address")
+    @Column(name = "address")
     private String address;
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = DepartmentEnt.class)
-    @Column(name = "DepartmentID")
-    private List<DepartmentEnt> departmentId;
-    @Column(name = "Position")
+    @Column(name = "employee_position")
     private String position;
-    @Column(name = "Salary")
+    @Column(name = "employee_salary")
     private Double salary;
-    @Column(name = "HireDate")
+    @Column(name = "hire_date")
     private Date hireDate;
-    @Column(name = "SupervisorId")
+    @Column(name = "supervisor_id")
     private Integer supervisorId;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private DepartmentEnt departmentEnt;
 }
