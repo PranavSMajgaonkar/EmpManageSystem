@@ -19,18 +19,19 @@ public class Employee {
     public boolean isPresent(List<EmployeeEnt> employeeEnt){
         boolean noRecord = true;
         List<EmployeeEnt> elist = null;
-
+        //list of emails from body
         List<String> email = employeeEnt.stream()
                 .map(EmployeeEnt::getEmail)
                 .toList();
-
+        //list of emails which is present in record
         for (String e : email)
             elist = employeeRepository.findByEmail(e);
 
+        //iterate on both list and check is record present in db using email. if no save record else don't save
         assert elist != null;
         for (EmployeeEnt existingOne : elist) {
-            for (EmployeeEnt newOne : employeeEnt)
-                if(newOne.getEmail().equals(existingOne.getEmail()))
+            for (String newOne : email)
+                if(newOne.equals(existingOne.getEmail()))
                     return noRecord = false;
         }
         return noRecord;
