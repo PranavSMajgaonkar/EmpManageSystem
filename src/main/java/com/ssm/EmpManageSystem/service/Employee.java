@@ -61,5 +61,7 @@ public class Employee {
     public List<EmployeeEnt> getList(){
        return employeeRepository.findAll();
     }
-
+    public EmployeeEnt isUserPresent(String  name, String email){
+        return employeeRepository.findByFirstNameAndEmail(name,email);
+    }
 }
